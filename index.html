@@ -66,12 +66,84 @@
             text-align: center;
         }
 
+        .buy-button {
+            display: inline-block;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding: 15px 60px;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 24px;
+            color: #00ff00;
+            background-color: transparent;
+            border: 3px solid #00ff00;
+            border-radius: 4px;
+            text-decoration: none;
+            text-shadow: 0 0 10px #00ff00;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .buy-button:hover {
+            background-color: #00ff00;
+            color: black;
+            box-shadow: 0 0 30px rgba(0, 255, 0, 0.6);
+        }
+
+        .ca-container {
+            margin-top: 20px;
+            font-size: 24px;
+            color: #00ff00;
+            text-shadow: 0 0 10px #00ff00;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .ca-label {
+            color: #00ff00;
+        }
+
+        .ca-address {
+            background: rgba(0, 255, 0, 0.1);
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .ca-address:hover {
+            background: rgba(255, 0, 255, 0.1);
+            color: #ff00ff;
+            text-shadow: 0 0 15px #ff00ff;
+        }
+
         @media (max-width: 600px) {
             h1 {
                 font-size: 36px;
             }
             .emoji {
                 font-size: 150px;
+            }
+            .buy-button {
+                font-size: 18px;
+                padding: 12px 40px;
+            }
+            .ca-container {
+                font-size: 18px;
             }
         }
     </style>
@@ -80,6 +152,11 @@
     <div class="container">
         <h1>$JEET</h1>
         <div class="emoji">👳🏾‍♂️</div>
+        <a href="https://pump.fun" target="_blank" class="buy-button">BUY</a>
+        <div class="ca-container">
+            <span class="ca-label">CA:</span>
+            <span class="ca-address" onclick="navigator.clipboard.writeText('XXXXX')">XXXXX</span>
+        </div>
     </div>
 </body>
 </html>
