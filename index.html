@@ -64,6 +64,7 @@
             max-width: 800px;
             width: 100%;
             text-align: center;
+            padding: 0 20px;
         }
 
         .buy-button {
@@ -102,35 +103,21 @@
             box-shadow: 0 0 30px rgba(0, 255, 0, 0.6);
         }
 
-        .ca-container {
+        .address {
+            display: inline-block;
             margin-top: 20px;
-            font-size: 18px;
+            font-size: 20px;
             color: #00ff00;
-            text-shadow: 0 0 10px #00ff00;
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            white-space: nowrap;
-            overflow: auto;
-            max-width: 100%;
-            padding: 10px;
-        }
-
-        .ca-label {
-            color: #00ff00;
-            flex-shrink: 0;
-        }
-
-        .ca-address {
             background: rgba(0, 255, 0, 0.1);
-            padding: 5px 10px;
+            padding: 10px 20px;
             border-radius: 4px;
             cursor: pointer;
             transition: all 0.3s ease;
+            text-shadow: 0 0 10px #00ff00;
+            white-space: nowrap;
         }
 
-        .ca-address:hover {
+        .address:hover {
             background: rgba(255, 0, 255, 0.1);
             color: #ff00ff;
             text-shadow: 0 0 15px #ff00ff;
@@ -147,18 +134,10 @@
                 font-size: 18px;
                 padding: 12px 40px;
             }
-            .ca-container {
+            .address {
                 font-size: 14px;
+                padding: 8px 16px;
             }
-        }
-
-        /* Hide scrollbar but keep functionality */
-        .ca-container::-webkit-scrollbar {
-            display: none;
-        }
-        .ca-container {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
         }
     </style>
 </head>
@@ -167,9 +146,8 @@
         <h1>$JEET</h1>
         <div class="emoji">👳🏾‍♂️</div>
         <a href="https://pump.fun/543PbZ311K4pxUfXyWPduXfuEB1HrqHHAAHgVLq1pump" target="_blank" class="buy-button">BUY</a>
-        <div class="ca-container">
-            <span class="ca-label">CA:</span>
-            <span class="ca-address" onclick="navigator.clipboard.writeText('543PbZ311K4pxUfXyWPduXfuEB1HrqHHAAHgVLq1pump')">543PbZ311K4pxUfXyWPduXfuEB1HrqHHAAHgVLq1pump</span>
+        <div>
+            <span class="address" onclick="navigator.clipboard.writeText('543PbZ311K4pxUfXyWPduXfuEB1HrqHHAAHgVLq1pump')">543PbZ311K4pxUfXyWPduXfuEB1HrqHHAAHgVLq1pump</span>
         </div>
     </div>
 </body>
