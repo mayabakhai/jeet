@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="format-detection" content="telephone=no">
     <title>$JEET</title>
 
     <!-- Primary Meta Tags -->
@@ -26,35 +27,52 @@
     <meta name="twitter:image" content="https://hype-storage-bucket.s3.us-west-2.amazonaws.com/jeet.png">
     <meta name="twitter:image:alt" content="$JEET">
     
-    <!-- Additional SEO Meta Tags -->
-    <meta name="theme-color" content="#00ff00">
-    <meta name="mobile-web-app-capable" content="yes">
+    <!-- iOS Specific -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="$JEET">
 
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
-        /* [Previous CSS remains exactly the same] */
-        body {
-            font-family: 'Press Start 2P', cursive;
+        * {
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            height: -webkit-fill-available;
+            height: 100%;
+        }
+
+        body {
+            min-height: 100vh;
+            min-height: -webkit-fill-available;
+            width: 100%;
+            margin: 0;
+            padding: env(safe-area-inset-top, 20px) env(safe-area-inset-right, 10px) env(safe-area-inset-bottom, 20px) env(safe-area-inset-left, 10px);
             background-color: black;
             color: #00ff00;
+            font-family: 'Press Start 2P', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
-            min-height: 100vh;
+            overflow-x: hidden;
+            -webkit-overflow-scrolling: touch;
+            position: relative;
         }
 
         h1 {
-            font-size: 64px;
-            margin-bottom: 40px;
+            font-size: clamp(36px, 15vw, 64px);
+            margin-bottom: 20px;
             text-align: center;
             text-shadow: 
                 2px 2px #ff00ff,
                 4px 4px #0000ff;
             animation: glow 2s ease-in-out infinite alternate;
+            width: 100%;
+            padding: 0 10px;
         }
 
         @keyframes glow {
@@ -71,10 +89,12 @@
         }
 
         .emoji {
-            font-size: 200px;
-            margin-top: 20px;
+            font-size: clamp(150px, 40vw, 200px);
+            margin: 20px 0;
             text-shadow: 0 0 20px #00ff00;
             animation: float 3s ease-in-out infinite;
+            -webkit-user-select: none;
+            user-select: none;
         }
 
         @keyframes float {
@@ -90,19 +110,25 @@
         }
 
         .container {
-            max-width: 800px;
             width: 100%;
-            text-align: center;
-            padding: 0 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 env(safe-area-inset-right, 10px) 0 env(safe-area-inset-left, 10px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            flex: 1;
         }
 
         .buy-button {
-            display: inline-block;
-            margin-top: 40px;
-            margin-bottom: 20px;
-            padding: 15px 60px;
-            font-family: 'Press Start 2P', cursive;
-            font-size: 24px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+            padding: clamp(12px, 4vw, 15px) clamp(40px, 15vw, 60px);
+            font-family: inherit;
+            font-size: clamp(18px, 6vw, 24px);
             color: #00ff00;
             background-color: transparent;
             border: 3px solid #00ff00;
@@ -112,30 +138,40 @@
             box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
             transition: all 0.3s ease;
             animation: pulse 2s infinite;
+            white-space: nowrap;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
+            cursor: pointer;
+            -webkit-appearance: none;
+            appearance: none;
         }
 
         @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-            100% {
-                transform: scale(1);
-            }
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
 
-        .buy-button:hover {
+        .buy-button:hover,
+        .buy-button:active {
             background-color: #00ff00;
             color: black;
             box-shadow: 0 0 30px rgba(0, 255, 0, 0.6);
         }
 
+        .address-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            padding: 10px 0;
+            margin: 0 auto;
+            scrollbar-width: none;
+        }
+
         .address {
             display: inline-block;
-            margin-top: 20px;
-            font-size: 20px;
+            font-size: clamp(14px, 4.5vw, 20px);
             color: #00ff00;
             background: rgba(0, 255, 0, 0.1);
             padding: 10px 20px;
@@ -144,28 +180,39 @@
             transition: all 0.3s ease;
             text-shadow: 0 0 10px #00ff00;
             white-space: nowrap;
+            -webkit-touch-callout: text;
+            -webkit-user-select: text;
+            user-select: text;
         }
 
-        .address:hover {
+        .address:active {
             background: rgba(255, 0, 255, 0.1);
             color: #ff00ff;
             text-shadow: 0 0 15px #ff00ff;
         }
 
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 36px;
+        /* Hide scrollbars */
+        .address-wrapper::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* iOS-specific optimizations */
+        @supports (-webkit-touch-callout: none) {
+            body {
+                cursor: default;
             }
-            .emoji {
-                font-size: 150px;
-            }
+            
             .buy-button {
-                font-size: 18px;
-                padding: 12px 40px;
+                padding-top: env(safe-area-inset-top, 15px);
+                padding-bottom: env(safe-area-inset-bottom, 15px);
             }
-            .address {
-                font-size: 14px;
-                padding: 8px 16px;
+        }
+
+        /* Prevent text size adjustment on orientation change */
+        @media screen and (orientation: landscape) {
+            html {
+                -webkit-text-size-adjust: none;
+                text-size-adjust: none;
             }
         }
     </style>
@@ -175,7 +222,7 @@
         <h1>$JEET</h1>
         <div class="emoji">👳🏾‍♂️</div>
         <a href="https://pump.fun/543PbZ311K4pxUfXyWPduXfuEB1HrqHHAAHgVLq1pump" target="_blank" class="buy-button">BUY</a>
-        <div>
+        <div class="address-wrapper">
             <span class="address" onclick="navigator.clipboard.writeText('543PbZ311K4pxUfXyWPduXfuEB1HrqHHAAHgVLq1pump')">543PbZ311K4pxUfXyWPduXfuEB1HrqHHAAHgVLq1pump</span>
         </div>
     </div>
